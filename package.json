@@ -1,0 +1,23 @@
+{
+  "name": "wechat-nodejs",
+  "version": "1.0.0",
+  "description": "使用 nodejs 开发微信公众号",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zymfe/wechat-nodejs.git"
+  },
+  "author": "https://github.com/zymfe/",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zymfe/wechat-nodejs/issues"
+  },
+  "homepage": "https://github.com/zymfe/wechat-nodejs#readme",
+  "devDependencies": {
+    "koa": "^2.8.1",
+    "sha1": "^1.1.1"
+  }
+}
