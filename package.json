@@ -18,6 +18,8 @@
   "homepage": "https://github.com/zymfe/wechat-nodejs#readme",
   "devDependencies": {
     "koa": "^2.8.1",
-    "sha1": "^1.1.1"
+    "raw-body": "^2.4.1",
+    "sha1": "^1.1.1",
+    "xml2js": "^0.4.22"
   }
 }
