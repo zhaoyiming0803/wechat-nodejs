@@ -1,6 +1,6 @@
 const sha1 = require('sha1');
 
-const handleMessage = require('../wechat/message');
+const Message = require('../wechat/Message');
 
 module.exports = function auth (wechat) {
   return async (ctx, next) => {
@@ -14,7 +14,8 @@ module.exports = function auth (wechat) {
         ? echostr
         : 'warning';
     } else if (method === 'post') {
-      await handleMessage(ctx);
+      const message = new Message(ctx);
+      await message.init();
     }
   }
 }
