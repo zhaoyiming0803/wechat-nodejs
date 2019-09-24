@@ -1,6 +1,7 @@
 const sha1 = require('sha1');
 
 const Message = require('../wechat/Message');
+const Wx = require('../wechat/Wx');
 
 module.exports = function auth (wechat) {
   return async (ctx, next) => {
@@ -17,5 +18,8 @@ module.exports = function auth (wechat) {
       const message = new Message(ctx);
       await message.init();
     }
+
+    const wx = new Wx();
+    await wx.getAccessToken();
   }
 }

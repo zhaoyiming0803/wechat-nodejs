@@ -19,6 +19,8 @@
   "devDependencies": {
     "koa": "^2.8.1",
     "raw-body": "^2.4.1",
+    "redis": "^2.8.0",
+    "request": "^2.88.0",
     "sha1": "^1.1.1",
     "xml2js": "^0.4.22"
   }
