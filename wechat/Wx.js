@@ -1,3 +1,5 @@
+const sha1 = request('sha1');
+
 const { wechat } = require('../config/index');
 const redis = require('../helper/redis');
 const request = require('../helper/request');
@@ -95,5 +97,39 @@ module.exports = class Wx {
       console.log('ticket ----- ', _ticket);
       return ticket;
     }
+  }
+
+  async createSignature (ctx) {
+    const conditionMap = {
+      noncestr: this.createNoncestr(),
+      timestamp: Math.floor(Date.now() / 1000),
+      url: ctx.header.host + ctx.url,
+      jsapi_ticket: await this.getTicket()
+    };
+    const str = Object.keys(conditionMap).sort().map(key => {
+      return `${key}=${conditionMap[key]}`;
+    }).join('&');
+    const signature = sha1(str);
+
+    console.log('signature: ', signature);
+
+    return {
+      timestamp: conditionMap.timestamp,
+      nonceStr: conditionMap.noncestr,
+      signature,
+      url: conditionMap.url
+    };
+  }
+
+  createNoncestr (step = 16) {
+    const seed = '0123456789abcdefghijklmnopqrstuvwxyz';
+    const seedLen = seed.length;
+    let noncestr = '';
+
+    for (let i = 0; i < step; i += 1) {
+      noncestr += Math.floor(Math.random() * seedLen);
+    }
+
+    return noncestr;
   }
 }

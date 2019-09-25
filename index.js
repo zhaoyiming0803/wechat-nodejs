@@ -1,12 +1,13 @@
 const Koa = require('koa');
-
-const { wechat } = require('./config');
-const auth = require('./middleware/auth');
+const Router = require('koa-router');
+const router = new Router();
 
 const app = new Koa();
 
-app.use(auth(wechat));
+router.use('/auth', require('./router/auth').routes());
+
+app.use(router.routes(), router.allowedMethods()); 
 
 app.listen(8092, () => {
-  console.log('koa listen port 8092');
+  console.log('wechant-nodejs application listen port 8092');
 });
