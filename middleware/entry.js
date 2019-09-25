@@ -1,5 +1,6 @@
+const cwd = process.cwd();
 const { wechat } = require(`${cwd}/config`);
-const Message = require(`${process.cwd()}/wechat/Message`);
+const Message = require(`${cwd}/wechat/Message`);
 
 module.exports = async (ctx, next) => {
   const method = ctx.method.toLowerCase();
