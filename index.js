@@ -1,11 +1,8 @@
 const Koa = require('koa');
-const Router = require('koa-router');
-const router = new Router();
-
 const app = new Koa();
+const router = require('./router');
 
-router.use('/wechat/auth', require('./router/auth').routes());
-
+app.use(require('./middleware/entry'));
 app.use(router.routes(), router.allowedMethods()); 
 
 app.listen(8092, () => {
