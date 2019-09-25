@@ -21,5 +21,6 @@ module.exports = function auth (wechat) {
 
     const wx = new Wx();
     await wx.getAccessToken();
+    await wx.getTicket();
   }
 }

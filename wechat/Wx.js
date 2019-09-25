@@ -4,7 +4,7 @@ const request = require('../helper/request');
 
 module.exports = class Wx {
   constructor() {
-    
+    this.baseUrl = 'https://api.weixin.qq.com/cgi-bin';
   }
 
   async getAccessToken() {
@@ -16,6 +16,7 @@ module.exports = class Wx {
         accessToken = await this.updateAccessToken();
       }
     } catch (e) {
+      console.log('get access_token error: ', e);
       accessToken = await this.updateAccessToken();
     } finally {
       console.log('token', accessToken);
@@ -24,24 +25,73 @@ module.exports = class Wx {
   }
 
   async updateAccessToken () {
-    const options = {
-      url: 'https://api.weixin.qq.com/cgi-bin/token'
-        + '?grant_type=client_credential'
-        + `&appid=${wechat.appID}`
-        + `&secret=${wechat.appsecret}`,
-      method: 'get'
-    }
+    let accessToken = '';
 
     try {
+      const options = {
+        url: `${this.baseUrl}/token`
+          + '?grant_type=client_credential'
+          + `&appid=${wechat.appID}`
+          + `&secret=${wechat.appsecret}`,
+        method: 'get'
+      }
       const result = await request(options);
-      await redis.set('access_token', result.access_token);
-      await redis.expire('access_token', parseInt(Date.now() / 1000, 10) + result.expires_in - 200);
-      return result.access_token;
+
+      if (result.errcode === 0) {
+        accessToken = result.access_token;
+        await redis.set('access_token', accessToken);
+        await redis.expire('access_token', parseInt(Date.now() / 1000, 10) + result.expires_in - 200);
+      }
     } catch (e) {
-      return '';
+      console.log('update access_token error: ', e);
     } finally {
       const token = await redis.get('access_token');
       console.log('token ----- ', token);
+      return accessToken;
+    }
+  }
+
+  async getTicket () {
+    let ticket = '';
+
+    try {
+      ticket = await redis.get('jsapi_ticket');
+      if (!ticket) {
+        ticket = await this.updateTicket();
+      }
+    } catch (e) {
+      console.log('get jsapi_ticket error ', e);
+      ticket = await this.updateTicket();
+    } finally {
+      console.log('ticket: ', ticket);
+      return ticket;
+    }
+  }
+
+  async updateTicket () {
+    let ticket = '';
+
+    try {
+      const token = await this.getAccessToken();
+      const options = {
+        url: `${this.baseUrl}/ticket/getticket`
+          + `?access_token=${token}`
+          + `&type=jsapi`,
+        method: 'get'
+      }
+      const result = await request(options);
+
+      if (result.errcode === 0) {
+        ticket = result.ticket;
+        await redis.set('jsapi_ticket', ticket);
+        await redis.expire('jsapi_ticket', parseInt(Date.now() / 1000, 10) + result.expires_in - 200);
+      }
+    } catch (e) {
+      console.log('update jsapi_ticket error: ', e);
+    } finally {
+      const _ticket = await redis.get('access_token');
+      console.log('ticket ----- ', _ticket);
+      return ticket;
     }
   }
 }
