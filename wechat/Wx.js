@@ -1,8 +1,9 @@
-const sha1 = request('sha1');
+const sha1 = require('sha1');
 
-const { wechat } = require('../config/index');
-const redis = require('../helper/redis');
-const request = require('../helper/request');
+const cwd = process.cwd();
+const { wechat } = require(`${cwd}/config/index`);
+const redis = require(`${cwd}/helper/redis`);
+const request = require(`${cwd}/helper/request`);
 
 module.exports = class Wx {
   constructor() {

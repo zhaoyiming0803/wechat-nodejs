@@ -5,8 +5,10 @@ const sha1 = require('sha1');
 const Router = require('koa-router');
 const router = new Router();
 
-const { wechat } = require('../config');
-const wx = new require('../wechat/Wx')();
+const cwd = process.cwd();
+const { wechat } = require(`${cwd}/config`);
+const Wx = require(`${cwd}/wechat/Wx`);
+const wx = new Wx();
 
 /**
  * 响应微信发送的 Token 验证
