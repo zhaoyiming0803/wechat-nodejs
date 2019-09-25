@@ -1,3 +1,4 @@
+const sha1 = require('sha1');
 const cwd = process.cwd();
 const { wechat } = require(`${cwd}/config`);
 const Message = require(`${cwd}/wechat/Message`);
