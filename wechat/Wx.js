@@ -37,6 +37,8 @@ module.exports = class Wx {
       }
       const result = await request(options);
 
+      console.log('token result: ', result);
+
       if (result.errcode === 0) {
         accessToken = result.access_token;
         await redis.set('access_token', accessToken);
