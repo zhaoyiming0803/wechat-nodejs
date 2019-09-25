@@ -7,6 +7,7 @@ const router = new Router();
 
 const cwd = process.cwd();
 const { wechat } = require(`${cwd}/config`);
+const Message = require(`${cwd}/wechat/Message`);
 const Wx = require(`${cwd}/wechat/Wx`);
 const wx = new Wx();
 
@@ -14,13 +15,20 @@ const wx = new Wx();
  * 响应微信发送的 Token 验证
  */
 router.get('/url', async (ctx, next) => {
-  const { signature, timestamp, nonce, echostr } = ctx.query;
-  const str = [wechat.token, timestamp, nonce].sort().join('');
-  const sha1Str = sha1(str);
+  const method = ctx.method.toLowerCase();
 
-  ctx.body = sha1Str === signature
-    ? echostr
-    : 'warning';
+  if (method === 'get') {
+    const { signature, timestamp, nonce, echostr } = ctx.query;
+    const str = [wechat.token, timestamp, nonce].sort().join('');
+    const sha1Str = sha1(str);
+    
+    ctx.body = sha1Str === signature
+      ? echostr
+      : 'warning';
+  } else if (method === 'post') {
+    const message = new Message();
+    await message.init(ctx);
+  }
 });
 
 /**

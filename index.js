@@ -4,7 +4,7 @@ const router = new Router();
 
 const app = new Koa();
 
-router.use('/auth', require('./router/auth').routes());
+router.use('/wechat/auth', require('./router/auth').routes());
 
 app.use(router.routes(), router.allowedMethods()); 
 

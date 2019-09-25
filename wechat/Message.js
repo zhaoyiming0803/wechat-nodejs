@@ -5,12 +5,12 @@ const getRawBody = require('raw-body');
 const { parseXML, createXMLMessage } = require('../util');
 
 module.exports = class Message {
-  constructor (ctx) {
-    this.ctx = ctx;
+  constructor () {
+    
   }
 
-  async init () {
-    const ctx = this.ctx;
+  async init (ctx) {
+    this.ctx = ctx;
     const data = await getRawBody(ctx.req, {
       length: ctx.length,
       limit: '1mb',
