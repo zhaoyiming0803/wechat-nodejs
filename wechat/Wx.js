@@ -89,7 +89,7 @@ module.exports = class Wx {
     } catch (e) {
       console.log('update jsapi_ticket error: ', e);
     } finally {
-      const _ticket = await redis.get('access_token');
+      const _ticket = await redis.get('jsapi_ticket');
       console.log('ticket ----- ', _ticket);
       return ticket;
     }
