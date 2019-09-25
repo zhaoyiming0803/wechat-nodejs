@@ -37,9 +37,8 @@ module.exports = class Wx {
       }
       const result = await request(options);
 
-      console.log('token result: ', result);
-
-      if (result.errcode === 0) {
+      // token 获取成功时，腾讯接口竟然不返回 errcode 字段 （-_-。）
+      if (!result.errcode) {
         accessToken = result.access_token;
         await redis.set('access_token', accessToken);
         await redis.expire('access_token', parseInt(Date.now() / 1000, 10) + result.expires_in - 200);
@@ -83,6 +82,7 @@ module.exports = class Wx {
       }
       const result = await request(options);
 
+      // ticket 获取成功时，腾讯接口返回 errcode 字段为 0，这一点与 access_token 不同
       if (result.errcode === 0) {
         ticket = result.ticket;
         await redis.set('jsapi_ticket', ticket);
