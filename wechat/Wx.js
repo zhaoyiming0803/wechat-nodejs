@@ -104,7 +104,7 @@ module.exports = class Wx {
     const conditionMap = {
       noncestr: this.createNoncestr(),
       timestamp: Math.floor(Date.now() / 1000),
-      url: ctx.header.host + ctx.url,
+      url: ctx.header.referer,
       jsapi_ticket: await this.getTicket()
     };
     const str = Object.keys(conditionMap).sort().map(key => {
