@@ -1,4 +1,4 @@
-module.exports = async (ctx, next) {
+module.exports = async (ctx, next) => {
   const allowedOrigin = [
     'https://web.0351zhuangxiu.com',
     'http://localhost:8080'
