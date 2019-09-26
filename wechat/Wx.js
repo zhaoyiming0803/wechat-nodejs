@@ -118,7 +118,8 @@ module.exports = class Wx {
       timestamp: conditionMap.timestamp,
       nonceStr: conditionMap.noncestr,
       signature,
-      url: conditionMap.url
+      url: conditionMap.url,
+      appId: wechat.appID
     };
   }
 
