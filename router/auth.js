@@ -1,5 +1,5 @@
 /**
- * 微信鉴权相关
+ * 提供给前端使用的鉴权相关接口
  */
 const sha1 = require('sha1');
 const Router = require('koa-router');

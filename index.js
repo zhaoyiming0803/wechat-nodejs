@@ -2,7 +2,6 @@ const Koa = require('koa');
 const app = new Koa();
 const router = require('./router');
 
-app.use(require('./middleware/entry'));
 app.use(router.routes(), router.allowedMethods()); 
 
 app.listen(8092, () => {
