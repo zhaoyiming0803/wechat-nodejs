@@ -73,6 +73,10 @@ module.exports = class Message {
 
       VIEW () {
         this.reply('您刚刚点击了菜单跳转链接');
+      },
+
+      TEMPLATESENDJOBFINISH () {
+        console.log('模板消息发送完成：', this.message);
       }
     }
 
