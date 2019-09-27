@@ -10,9 +10,10 @@ const message = {
 
 const formatMessage = message => {
   const xmlMessage = {};
-  const keys = Object.keys(message);
 
   if (!(typeof message === 'object')) return xmlMessage;
+
+  const keys = Object.keys(message);
 
   for (let i = 0; i < keys.length; i += 1) {
     const key = keys[i];

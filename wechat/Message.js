@@ -2,7 +2,7 @@
  * 微信消息
  */
 const getRawBody = require('raw-body');
-const { parseXML, createXMLMessage } = require('../util');
+const { parseXML, formatMessage } = require('../util');
 
 module.exports = class Message {
   async init(ctx) {
@@ -12,7 +12,7 @@ module.exports = class Message {
       encoding: ctx.charset
     });
     const content = await parseXML(data);
-    const message = createXMLMessage(content.xml);
+    const message = formatMessage(content.xml);
     const { MsgType } = message;
     const handler = 'handle' + MsgType.slice(0, 1).toUpperCase() + MsgType.slice(1);
 
