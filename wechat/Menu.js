@@ -3,6 +3,7 @@
  */
 
 const Wx = require('./Wx');
+const cwd = process.cwd();
 const request = require(`${cwd}/helper/request`);
 
 class Menu extends Wx {
@@ -23,5 +24,9 @@ class Menu extends Wx {
     }
     const result = await request(options);
     console.log('create menu: ', result);
+  }
+
+  del () {
+
   }
 }
