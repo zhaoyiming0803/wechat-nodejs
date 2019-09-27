@@ -26,11 +26,7 @@ module.exports = class Message {
   }
 
   handleText (content) {
-    if (content === 'button') {
-      menu.create();
-    } else {
-      this.putMessage(content, '您刚刚发给我一段文字', 'text');
-    }
+    this.putMessage(content, '您刚刚发给我一段文字', 'text');
   }
 
   handleEvent () {
@@ -40,6 +36,10 @@ module.exports = class Message {
   putMessage (content, returnMsg, type) {
     const ctx = this.ctx;
     const message = createXMLMessage(content.xml);
+
+    if (message.Content.toLowerCase() === 'button') {
+      return menu.create();
+    }
     
     ctx.status = 200;
     ctx.type = 'application/xml';
