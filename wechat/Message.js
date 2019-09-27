@@ -22,37 +22,42 @@ module.exports = class Message {
   }
 
   handleText() {
-    this.reply(`您发送的内容是：${this.message.Content}`);
+    this.replyText(`欢迎来到我的测试公众号，可以点击下方菜单加我个人微信，聊聊代码^_^`);
   }
 
   handleImage() {
-    this.reply('您发送了一张图片');
+    this.replyText(`欢迎来到我的测试公众号，可以点击下方菜单加我个人微信，聊聊代码^_^`);
   }
 
   handleVoice() {
-    this.reply('您发送了一段语音');
+    this.replyText(`欢迎来到我的测试公众号，可以点击下方菜单加我个人微信，聊聊代码^_^`);
   }
 
   handleVideo() {
-    this.reply('您发送了一段视频');
+    this.replyText(`欢迎来到我的测试公众号，可以点击下方菜单加我个人微信，聊聊代码^_^`);
   }
 
   handleShortvideo() {
-    this.reply('您发送了一段短视频');
+    this.replyText(`欢迎来到我的测试公众号，可以点击下方菜单加我个人微信，聊聊代码^_^`);
   }
 
   handleLocation() {
-    this.reply('您发送了地理位置');
+    this.replyText(`欢迎来到我的测试公众号，可以点击下方菜单加我个人微信，聊聊代码^_^`);
   }
 
   handleLink() {
-    this.reply('您发送了一条链接');
+    this.replyText(`欢迎来到我的测试公众号，可以点击下方菜单加我个人微信，聊聊代码^_^`);
   }
 
   handleEvent() {
     const eventMap = {
       subscribe() {
-        this.reply('感谢关注我的测试公众号，可以加我个人微信号：1047832475，或点击菜单 GitHub，查看我的开源项目^_^');
+        this.reply(`
+          感谢关注我的测试公众号^_^
+          可以点击下方菜单：
+          - 加我个人微信号
+          - 通过GitHub查看我所有开源项目源码
+        `);
       },
 
       unsubscribe() {
@@ -68,11 +73,11 @@ module.exports = class Message {
       },
 
       CLICK() {
-        this.reply('您刚刚点击了拉取消息的菜单按钮');
+        this.replyText(`欢迎来到我的测试公众号，可以点击下方菜单加我个人微信，聊聊代码^_^`);
       },
 
       VIEW() {
-        this.reply('您刚刚点击了菜单跳转链接');
+        this.replyText(`欢迎来到我的测试公众号，可以点击下方菜单加我个人微信，聊聊代码^_^`);
       },
 
       TEMPLATESENDJOBFINISH() {
@@ -87,9 +92,9 @@ module.exports = class Message {
   }
 
   /**
-   * 暂时全部回复文本消息，后期有时间再拓展
+   * 默认回复图片消息（个人微信二维码图），后期有时间再拓展
    */
-  reply(returnMsg) {
+  reply() {
     const { ctx, message } = this;
 
     ctx.status = 200;
@@ -100,11 +105,27 @@ module.exports = class Message {
       <CreateTime>${parseInt(Date.now() / 10, 10)}</CreateTime>
       <MsgType><![CDATA[image]]></MsgType>
       <Image>
-        <MediaId><![CDATA[http://mmbiz.qpic.cn/mmbiz_jpg/IvibBfZ4SxxaXWTsLRmic61TwyATUUIldR8tHRp9zvtfmLBRvvQcd1Jicia3OjTEDG0W8FtqTQ2GBhrSwTLTappNIw/0]]></MediaId>
+        <MediaId><![CDATA[pO2BzgujoT8DDEo8wnhFA-nnuDhsz9r-wHu0v21eXUI]]></MediaId>
       </Image>
     </xml>`;
 
     console.log(resp);
+
+    ctx.body = resp;
+  }
+
+  replyText(returnMsg) {
+    const { ctx, message } = this;
+
+    ctx.status = 200;
+    ctx.type = 'application/xml';
+    const resp = `<xml>
+      <ToUserName><![CDATA[${message.FromUserName}]]></ToUserName>
+      <FromUserName><![CDATA[${message.ToUserName}]]></FromUserName>
+      <CreateTime>${parseInt(Date.now() / 10, 10)}</CreateTime>
+      <MsgType><![CDATA[text]]></MsgType>
+      <Content><![CDATA[${returnMsg}]]></Content>
+    </xml>`;
 
     ctx.body = resp;
   }
