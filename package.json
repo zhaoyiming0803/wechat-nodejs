@@ -19,6 +19,7 @@
   "devDependencies": {
     "koa": "^2.8.1",
     "koa-router": "latest",
+    "koa-bodyparser": "latest",
     "raw-body": "^2.4.1",
     "redis": "^2.8.0",
     "request": "^2.88.0",

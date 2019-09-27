@@ -9,8 +9,7 @@ const Menu = require(`${cwd}/wechat/Menu`);
 const menu = new Menu();
 
 router.post('/create', async (ctx, next) => {
-  const menu = ctx.request.body;
-  ctx.body = await menu.create(menu);
+  ctx.body = await menu.create(ctx.request.body);
 });
 
 router.get('/delete', async (ctx, next) => {
