@@ -4,7 +4,8 @@
 const Router = require('koa-router');
 const router = new Router();
 
-const Menu = require('./Menu');
+const cwd = process.cwd();
+const Menu = require(`${cwd}/wechat/Menu`);
 const menu = new Menu();
 
 router.post('/create', async (ctx, next) => {
