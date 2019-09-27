@@ -51,7 +51,7 @@ module.exports = class Message {
 
   handleEvent () {
     const eventMap = {
-      subscribe () {
+      subscribe() {
         this.reply('感谢关注我的测试公众号，可以加我个人微信号：1047832475，或点击菜单 GitHub，查看我的开源项目^_^');
       },
 
@@ -76,7 +76,7 @@ module.exports = class Message {
       }
     }
 
-    eventMap[this.message.Event]()
+    eventMap[this.message.Event].call(this)
   }
 
   /**
