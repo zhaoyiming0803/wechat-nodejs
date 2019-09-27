@@ -76,7 +76,7 @@ module.exports = class Message {
       }
     }
 
-    eventType[this.message.Event]()
+    eventMap[this.message.Event]()
   }
 
   /**
