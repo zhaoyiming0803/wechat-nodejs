@@ -1,7 +1,6 @@
 module.exports = async (ctx, next) => {
   const allowedOrigin = [
-    'https://web.0351zhuangxiu.com',
-    'http://localhost:8080'
+    'https://web.0351zhuangxiu.com'
   ];
 
   if (allowedOrigin.includes(ctx.header.origin)) {
