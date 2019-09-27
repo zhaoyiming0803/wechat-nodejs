@@ -3,8 +3,6 @@
  */
 const getRawBody = require('raw-body');
 const { parseXML, createXMLMessage } = require('../util');
-const Menu = require('./Menu');
-const menu = new Menu();
 
 module.exports = class Message {
   constructor () {
@@ -36,10 +34,6 @@ module.exports = class Message {
   putMessage (content, returnMsg, type) {
     const ctx = this.ctx;
     const message = createXMLMessage(content.xml);
-
-    if (message.Content.toLowerCase() === 'button') {
-      return menu.create();
-    }
     
     ctx.status = 200;
     ctx.type = 'application/xml';

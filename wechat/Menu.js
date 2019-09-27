@@ -7,26 +7,31 @@ const cwd = process.cwd();
 const request = require(`${cwd}/helper/request`);
 
 module.exports = class Menu extends Wx {
-  async create () {
+  async create (menu) {
     const token = await this.getAccessToken('access_token');
     const options = {
-      url: `${this.baseUrl}//menu/create?access_token=${token}`,
+      url: `${this.baseUrl}/menu/create?access_token=${token}`,
       method: 'post',
-      body: {
-        button: [
-          {
-            type: 'view',
-            name: 'GitHub',
-            url: 'https://github.com/zymfe'
-          }
-        ]
-      }
+      body: menu
     }
-    const result = await request(options);
-    console.log('create menu: ', result);
+    return await request(options);
   }
 
-  del () {
+  async get () {
+    const token = await this.getAccessToken('access_token');
+    const options = {
+      url: `${this.baseUrl}/get_current_selfmenu_info?access_token=${token}`,
+      method: 'get'
+    }
+    return await request(options);
+  }
 
+  async delete () {
+    const token = await this.getAccessToken('access_token');
+    const options = {
+      url: `${this.baseUrl}/menu/delete?access_token=${token}`,
+      method: 'get'
+    }
+    return await request(options);
   }
 }
