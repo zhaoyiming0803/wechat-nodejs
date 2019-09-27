@@ -44,7 +44,7 @@ module.exports = class Wx {
       if (!result.errcode) {
         accessToken = result.access_token;
         await redis.set('access_token', accessToken);
-        await redis.expire('access_token', parseInt(Date.now() / 1000, 10) + result.expires_in - 200);
+        await redis.expire('access_token', result.expires_in - 200);
       }
     } catch (e) {
       console.log('update access_token error: ', e);
@@ -89,7 +89,7 @@ module.exports = class Wx {
       if (result.errcode === 0) {
         ticket = result.ticket;
         await redis.set('jsapi_ticket', ticket);
-        await redis.expire('jsapi_ticket', parseInt(Date.now() / 1000, 10) + result.expires_in - 200);
+        await redis.expire('jsapi_ticket', result.expires_in - 200);
       }
     } catch (e) {
       console.log('update jsapi_ticket error: ', e);
