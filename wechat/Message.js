@@ -3,6 +3,8 @@
  */
 const getRawBody = require('raw-body');
 const { parseXML, createXMLMessage } = require('../util');
+const Menu = require('./Menu');
+const menu = new Menu();
 
 module.exports = class Message {
   constructor () {
@@ -24,7 +26,11 @@ module.exports = class Message {
   }
 
   handleText (content) {
-    this.putMessage(content, '您刚刚发给我一段文字', 'text');
+    if (content === 'button') {
+      menu.create();
+    } else {
+      this.putMessage(content, '您刚刚发给我一段文字', 'text');
+    }
   }
 
   handleEvent () {
