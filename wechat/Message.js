@@ -76,7 +76,10 @@ module.exports = class Message {
       }
     }
 
-    eventMap[this.message.Event].call(this)
+    const fn = eventMap[this.message.Event];
+    if (fn) {
+      fn.call(this);
+    }
   }
 
   /**

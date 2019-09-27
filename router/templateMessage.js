@@ -5,7 +5,7 @@ const Router = require('koa-router');
 const router = new Router();
 
 const cwd = process.cwd();
-const tpl = require(`${cwd}/wechat/TemplateMessage`);
+const TemplateMessage = require(`${cwd}/wechat/TemplateMessage`);
 const tpl = new TemplateMessage();
 
 router.post('/send', async (ctx, next) => {
