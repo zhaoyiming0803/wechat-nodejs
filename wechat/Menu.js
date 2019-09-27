@@ -6,7 +6,7 @@ const Wx = require('./Wx');
 const cwd = process.cwd();
 const request = require(`${cwd}/helper/request`);
 
-class Menu extends Wx {
+module.exports = class Menu extends Wx {
   async create () {
     const token = await this.getAccessToken('access_token');
     const options = {
