@@ -52,7 +52,7 @@ module.exports = class Message {
   handleEvent() {
     const eventMap = {
       subscribe() {
-        this.reply(`
+        this.replyText(`
           感谢关注我的测试公众号^_^
           可以点击下方菜单：
           - 加我个人微信号
