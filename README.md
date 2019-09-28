@@ -23,7 +23,9 @@
 - [x] 使用JS-SDK所需配置（https://github.com/zymfe/VueNode/blob/dev/fe/src/libs/wx/index.ts）
 - [x] 自定义公众号底部菜单栏
 - [x] 消息接收与回复
+- [x] 添加素材
 - [x] 发送模板消息
+- [x] 微信网页授权
 - [x] 更多功能正在逐步开发中，看着开发文档做即可.
 
 ### 说明
