@@ -8,8 +8,8 @@ const request = require(`${cwd}/helper/request`);
 const { wechat } = require(`${cwd}/config`);
 
 module.exports = class Authorization extends Wx {
-  async getCode (redirectURI) {
-    const url = `${this.openHost}/connect/oauth2/authorize` +
+  async createUrlForAuthCode (redirectURI) {
+    return `${this.openHost}/connect/oauth2/authorize` +
       `?appid=${wechat.appID}` + 
       `&redirect_uri=${redirectURI}` +
       '&response_type=code'+

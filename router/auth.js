@@ -29,7 +29,7 @@ router.get('/signature', async (ctx, next) => {
  * 网页授权获取 code
  */
 router.post('/authorizeCode', async (ctx, next) => {
-  await authorization.getCode(ctx.request.body.redirectURI);
+  ctx.body = await authorization.createUrlForAuthCode(ctx.request.body.redirectURI);
 });
 
 /**
