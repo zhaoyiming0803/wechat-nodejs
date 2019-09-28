@@ -10,7 +10,7 @@ module.exports = class TemplateMessage extends Wx {
   async send (body) {
     const token = await this.getAccessToken('access_token');
     return await request({
-      url: `${this.baseUrl}/message/template/send?access_token=${token}`,
+      url: `${this.apiHost}/cgi-bin/message/template/send?access_token=${token}`,
       method: 'post',
       body
     });

@@ -10,7 +10,7 @@ module.exports = class Menu extends Wx {
   async create (menu) {
     const token = await this.getAccessToken('access_token');
     const options = {
-      url: `${this.baseUrl}/menu/create?access_token=${token}`,
+      url: `${this.apiHost}/cgi-bin/menu/create?access_token=${token}`,
       method: 'post',
       body: menu
     }
@@ -20,7 +20,7 @@ module.exports = class Menu extends Wx {
   async get () {
     const token = await this.getAccessToken('access_token');
     const options = {
-      url: `${this.baseUrl}/get_current_selfmenu_info?access_token=${token}`,
+      url: `${this.apiHost}/cgi-bin/get_current_selfmenu_info?access_token=${token}`,
       method: 'get'
     }
     return await request(options);
@@ -29,7 +29,7 @@ module.exports = class Menu extends Wx {
   async delete () {
     const token = await this.getAccessToken('access_token');
     const options = {
-      url: `${this.baseUrl}/menu/delete?access_token=${token}`,
+      url: `${this.apiHost}/cgi-bin/menu/delete?access_token=${token}`,
       method: 'get'
     }
     return await request(options);

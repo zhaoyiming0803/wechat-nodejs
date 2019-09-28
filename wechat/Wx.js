@@ -7,7 +7,8 @@ const request = require(`${cwd}/helper/request`);
 
 module.exports = class Wx {
   constructor() {
-    this.baseUrl = 'https://api.weixin.qq.com/cgi-bin';
+    this.apiHost = 'https://api.weixin.qq.com';
+    this.openHost = 'https://open.weixin.qq.com';
   }
 
   async getAccessToken() {
@@ -32,7 +33,7 @@ module.exports = class Wx {
 
     try {
       const options = {
-        url: `${this.baseUrl}/token`
+        url: `${this.apiHost}/cgi-bin/token`
           + '?grant_type=client_credential'
           + `&appid=${wechat.appID}`
           + `&secret=${wechat.appsecret}`,
@@ -78,7 +79,7 @@ module.exports = class Wx {
     try {
       const token = await this.getAccessToken();
       const options = {
-        url: `${this.baseUrl}/ticket/getticket`
+        url: `${this.apiHost}/cgi-bin/ticket/getticket`
           + `?access_token=${token}`
           + `&type=jsapi`,
         method: 'get'
