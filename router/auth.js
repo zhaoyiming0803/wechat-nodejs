@@ -10,6 +10,7 @@ const Wx = require(`${cwd}/wechat/Wx`);
 const wx = new Wx();
 const Authorization = require(`${cwd}/wechat/Authorization`);
 const authorization = new Authorization();
+const db = require(`${cwd}/helper/db`);
 
 /**
  * 获取微信 token
@@ -44,7 +45,12 @@ router.post('/authorizeUserInfo', async (ctx, next) => {
     ctx.body = result;
   } else {
     const userInfo = await authorization.getUserInfo(result.access_token, result.openid);
-    ctx.body = userInfo;
+    const [id] = await db('select user_openid from tour_user where user_openid="'+ userInfo.openid +'"');
+    
+    ctx.body = {
+      ...userInfo,
+      isBindWx: id ? true : false
+    }
   }
 });
 
