@@ -29,7 +29,9 @@ router.get('/signature', async (ctx, next) => {
  * 网页授权获取 code
  */
 router.post('/authorizeCode', async (ctx, next) => {
-  ctx.body = await authorization.createUrlForAuthCode(ctx.request.body.redirectURI);
+  ctx.body = {
+    url: authorization.createUrlForAuthCode(ctx.request.body.redirectURI)
+  };
 });
 
 /**
@@ -41,8 +43,7 @@ router.post('/authorizeUserInfo', async (ctx, next) => {
   if (result.errcode) {
     ctx.body = result;
   } else {
-    const userInfo = await authorization.getUseInfo(result.access_token, result.openid);
-    
+    const userInfo = await authorization.getUserInfo(result.access_token, result.openid);
     ctx.body = userInfo;
   }
 });
