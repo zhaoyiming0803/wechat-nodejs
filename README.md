@@ -14,7 +14,7 @@
 
 ### 功能抢先看（测试号只允许有100个粉丝）
 
-![image](https://github.com/zymseo/wx-public/blob/master/qrcode.png)
+![image](https://github.com/zymfe/wx-public/raw/master/qrcode.png)
 
 ### 目前已实现
 
