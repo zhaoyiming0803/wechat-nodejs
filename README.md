@@ -20,7 +20,7 @@
 
 - [x] 获取access_token
 - [x] 获取签名
-- [x] 使用JS-SDK所需配置（https://github.com/zymfe/VueNode/blob/dev/fe/src/libs/wx/index.ts)
+- [x] 使用JS-SDK所需配置（https://github.com/zhaoyiming0803/VueNode/blob/dev/fe/src/libs/wx/index.ts)
 - [x] 自定义公众号底部菜单栏
 - [x] 消息接收与回复
 - [x] 添加素材

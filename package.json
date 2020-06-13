@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/zymfe/wechat-nodejs.git"
+    "url": "git+https://github.com/zhaoyiming0803/wechat-nodejs.git"
   },
-  "author": "https://github.com/zymfe/",
+  "author": "https://github.com/zhaoyiming0803/",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/zymfe/wechat-nodejs/issues"
+    "url": "https://github.com/zhaoyiming0803/wechat-nodejs/issues"
   },
-  "homepage": "https://github.com/zymfe/wechat-nodejs#readme",
+  "homepage": "https://github.com/zhaoyiming0803/wechat-nodejs#readme",
   "devDependencies": {
     "koa": "^2.8.1",
     "koa-router": "latest",
