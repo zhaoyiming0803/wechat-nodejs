@@ -16,7 +16,7 @@
 
 ### 功能抢先看（测试号只允许有 100 个粉丝）
 
-![image](https://github.com/zhaoyiming0803/wx-public/raw/master/qrcode.png)
+![image](https://github.com/zhaoyiming0803/wechat-php/blob/master/qrcode.png)
 
 ### 目前已实现
 
