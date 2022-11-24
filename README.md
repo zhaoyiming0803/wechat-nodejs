@@ -36,7 +36,7 @@
 
 ### 说明
 
-如果对您有帮助，您可以点右上角 "Star" 支持一下 谢谢！ ^_^
-或者您可以 "follow" 一下，我会不断开源更多的有趣的项目! ^_^
-如有问题请直接在 Issues 中提，或者您发现问题并有非常好的解决方案，欢迎 PR! ^\_^
-当前服务使用 Koa 框架实现，如果对 Koa 实现原理感兴趣，可参考：《[逐行分析 Koa 源码](https://github.com/zhaoyiming0803/notebook/tree/master/Node.js/Koa)》
+- 如果对您有帮助，您可以点右上角 "Star" 支持一下 谢谢！ ^_^
+- 或者您可以 "follow" 一下，我会不断开源更多的有趣的项目! ^_^
+- 如有问题请直接在 Issues 中提，或者您发现问题并有非常好的解决方案，欢迎 PR! ^\_^
+- 当前服务使用 Koa 框架实现，如果对 Koa 实现原理感兴趣，可参考：《[逐行分析 Koa 源码](https://github.com/zhaoyiming0803/notebook/tree/master/Node.js/Koa)》
