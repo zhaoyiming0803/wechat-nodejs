@@ -30,6 +30,10 @@
 - [x] 微信网页授权
 - [x] 更多功能正在逐步开发中，看着开发文档做即可.
 
+### 个人微信&QQ：1047832475
+
+<img src="https://github.com/zhaoyiming0803/zhaoyiming0803/raw/master/wechat.jpeg" width="250" height="250" />
+
 ### 说明
 
 如果对您有帮助，您可以点右上角 "Star" 支持一下 谢谢！ ^_^
